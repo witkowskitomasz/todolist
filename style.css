@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 100px;
+
+    font-family: 'Lato', sans-serif;
+
+    background-color: rgba(89, 131, 252, 1);
+    background-image: linear-gradient(90deg, rgba(89, 131, 252, 1) 0%, rgba(198, 141, 189, 1) 100%);   
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 70%;
+    height: 600px;
+    
+    background-color: rgba(128, 93, 184, 0.432);
+    border-radius: 20px;  
+}
+
+/* INPUT SECTION START */
+
+.input-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 100px;
+    width: 95%;
+    margin-top: 20px;
+
+    background-color: rgba(107, 55, 160, 0.253);
+    border-radius: 20px;
+}
+.input-main {
+    all: unset;
+    
+    height: 40px;
+    width: 70%;
+    margin-right: 20px;
+    padding-left: 15px;
+    
+    border: 1px solid white;
+    border-radius: 20px;
+    color: white;
+
+}
+::placeholder {
+    color: white;
+}
+
+#add {
+    font-size: 35px;
+    color: white;
+    transition: 1s;
+}
+#add:hover {
+    transition: 1s;
+    transform: rotate(90deg);
+}
+
+/* END */
+
+/* ERROR DISPLAY SECTION START */
+
+.display-msg {
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    height: 20px;
+    color: white;
+}
+
+/* END */
+
+/* DISPLAY SECTION START */
+
+.display {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: 40px;
+    margin: 5px;
+
+    border: 1px solid white;
+    border-radius: 20px;
+    background: none;
+}
+.box-display {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    color: white;
+}
+.box-options {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+.box-btn{
+    font-size: 20px;
+    margin-right: 6px;
+    
+    color: white;
+}
