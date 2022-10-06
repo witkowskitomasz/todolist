@@ -21,8 +21,8 @@ body {
     align-items: center;
 
     width: 70%;
-    height: 600px;
-    
+    padding-bottom: 10px;
+
     background-color: rgba(128, 93, 184, 0.432);
     border-radius: 20px;  
 }

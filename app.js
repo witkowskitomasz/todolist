@@ -1,7 +1,8 @@
 let taskInput;
 let addBtn;
 let display;
-let errorMsg
+let errorMsg;
+let target;
 
 let taskArray = [];
 
@@ -27,12 +28,12 @@ const addTask = () => {
     if (taskInput.value === '') {
         errorMsg.textContent = 'Task is empty';
     } else {
-    errorMsg.textContent = '';
-    taskArray.push(taskInput.value);
-    boxAdding(taskArray.length);
-    taskDisplay = document.querySelector('#text' + taskArray.length);
-    taskDisplay.textContent = taskArray[taskArray.length - 1];
-    taskInput.value = '';
+        errorMsg.textContent = '';
+        taskArray.push(taskInput.value);
+        boxAdding(taskArray.length);
+        taskDisplay = document.querySelector('#text' + taskArray.length);
+        taskDisplay.textContent = taskArray[taskArray.length - 1];
+        taskInput.value = '';
     }
 }
 
@@ -67,14 +68,24 @@ const boxAdding = (e) => {
     
     const deleteBtn = document.createElement('i');
     deleteBtn.classList.add('fa-solid', 'fa-trash-can', 'box-btn');
-    deleteBtn.setAttribute('id', 'delete' + e);
+    deleteBtn.setAttribute('id', 'remove' + e);
     optionBox.append(deleteBtn);
 }
-const boxDisplay = e => {
 
-}
 
-const boxDelete = () => {
+const boxOptionClickChecker = e => {
+    target = e.target.id;
+    const firstTwoChars = target.slice(0, 2);
+    const lastChar = target.charAt(target.length - 1);
+    
+    if (firstTwoChars === 're') {
+    const boxElement = document.getElementById(lastChar);
+    boxElement.remove();
+    }
+
+    if (firstTwoChars === 'do') {
+        
+    }
 }
 
 
@@ -83,3 +94,4 @@ const boxDelete = () => {
 
 
 document.addEventListener('DOMContentLoaded', mainFunction);
+document.addEventListener('click', boxOptionClickChecker);
