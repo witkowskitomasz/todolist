@@ -119,3 +119,7 @@ body {
     
     color: white;
 }
+.done {
+    text-decoration: line-through;
+    color: gray;
+}

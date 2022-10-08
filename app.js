@@ -79,12 +79,13 @@ const boxOptionClickChecker = e => {
     const lastChar = target.charAt(target.length - 1);
     
     if (firstTwoChars === 're') {
-    const boxElement = document.getElementById(lastChar);
-    boxElement.remove();
+        const boxElement = document.getElementById(lastChar);
+        boxElement.remove();
     }
 
     if (firstTwoChars === 'do') {
-        
+        const boxElement = document.getElementById('text' + lastChar);
+        boxElement.classList.add('.done');
     }
 }
 
