@@ -20,6 +20,8 @@ const loadDOMElements = () => {
 }
 const loadDOMEvents = () => {
     addBtn.addEventListener('click', addTask);
+    document.addEventListener('click', boxOptionClickChecker);
+    taskInput.addEventListener('keyup', enterKey);
 }
 
 const taskCheckDisplay = () => (taskArray.length === 0) ? errorMsg.textContent = 'U dont have any tasks' : errorMsg.textContent = '';
@@ -70,6 +72,26 @@ const boxAdding = (e) => {
     deleteBtn.classList.add('fa-solid', 'fa-trash-can', 'box-btn');
     deleteBtn.setAttribute('id', 'remove' + e);
     optionBox.append(deleteBtn);
+
+    const newEditBox = document.createElement('div');
+    newEditBox.classList.add('edit-box');
+    newEditBox.setAttribute('id', 'e' + e)
+    display.append(newEditBox);
+
+    const editInput = document.createElement('input');
+    editInput.classList.add('input-edit');
+    editInput.setAttribute('id', 'input' + e);
+    newEditBox.append(editInput);
+
+    const editOk = document.createElement('i');
+    editOk.classList.add('fa-solid', 'fa-check', 'box-btn');
+    editOk.setAttribute('id', 'ok' + e);
+    newEditBox.append(editOk);
+
+    const editDeceline = document.createElement('i');
+    editDeceline.classList.add('fa-solid', 'fa-square-xmark', 'box-btn');
+    editDeceline.setAttribute('id', 'no' + e);
+    newEditBox.append(editDeceline);
 }
 
 
@@ -81,11 +103,40 @@ const boxOptionClickChecker = e => {
     if (firstTwoChars === 're') {
         const boxElement = document.getElementById(lastChar);
         boxElement.remove();
+        const editBox = document.getElementById('e' + lastChar);
+        editBox.remove();
     }
 
     if (firstTwoChars === 'do') {
         const boxElement = document.getElementById('text' + lastChar);
-        boxElement.classList.add('.done');
+        boxElement.classList.toggle('done');
+    }
+
+    if (firstTwoChars === 'ed') {
+        const boxElement = document.getElementById('e' + lastChar);
+        boxElement.classList.toggle('hidden');
+        const editInputDisplay = document.getElementById('input' + lastChar);
+        editInputDisplay.setAttribute('value', taskArray[lastChar - 1] );
+    }
+
+    if (firstTwoChars === 'ok') {
+        const editInputDisplay = document.getElementById('input' + lastChar);
+        const boxElement = document.getElementById('e' + lastChar);
+        taskArray[lastChar - 1] = editInputDisplay.value;
+        boxElement.classList.toggle('hidden');
+        const activeInput = document.getElementById('text' + lastChar);
+        activeInput.textContent = taskArray[lastChar - 1];
+    }
+
+    if (firstTwoChars === 'no') {
+        const boxElement = document.getElementById('e' + lastChar);
+        boxElement.classList.toggle('hidden');
+    }
+}
+
+const enterKey = e => {
+    if (e.key === 'Enter') {
+        addTask();
     }
 }
 
@@ -95,4 +146,3 @@ const boxOptionClickChecker = e => {
 
 
 document.addEventListener('DOMContentLoaded', mainFunction);
-document.addEventListener('click', boxOptionClickChecker);
